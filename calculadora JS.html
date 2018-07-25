@@ -1,0 +1,179 @@
+<!doctype>
+<html>
+    <head>
+        
+        <style>
+
+            .aligncenter{
+                text-align: center;
+            }
+            .grid-container{
+                display: grid;
+                grid-template-columns: auto auto auto auto;
+                background: rgb(177, 177, 171);
+                grid-gap: 15px;
+                padding: 20px;
+
+            }
+            .grid-container >button{
+                background: rgb(103, 136, 245);
+                border: solid 2px;
+                font-size: 45px;
+                text-align: center;
+            }           
+            .itemTela{
+                grid-column: 2/5;
+                border: solid 3px;
+             }           
+        </style>
+    </head>
+
+    <body>
+        
+        <h1 class="aligncenter">CALCULADORA</h1>
+        <div class="grid-container">
+            <button class="itemLiga" onclick="funcao(17)">C</button>
+            <button class="itemTela" id="tela"></button>
+            
+             
+            
+            <button onclick="funcao(7)">7</button>
+            <button class="item8" onclick="funcao(8)">8</button>
+            <button class="item9" onclick="funcao(9)">9</button>
+            <button class="itemMais" onclick="funcao(11)">+</button>
+            <button class="item4" onclick="funcao(4)">4</button>
+            <button class="item5" onclick="funcao(5)">5</button>
+            <button class="item6" onclick="funcao(6)">6</button>
+            <button class="itemMenos" onclick="funcao(12)">-</button>
+            <button class="item1" onclick="funcao(1)">1</button>
+            <button class="item2" onclick="funcao(2)">2</button>
+            <button class="item3" onclick="funcao(3)">3</button>
+            <button class="itemDiv" onclick="funcao(13)">/</button>
+            <button class="item0" onclick="funcao(0)">0</button>
+            <button class="itemPonto" onclick="funcao(14)">.</button>
+            <button class="itemIgual" onclick="funcao(15)">=</button>
+            <button class="itemX" onclick="funcao(16)">x</button>
+            
+           
+            <script>
+                var visor = 0;               
+                var decimal = 1;
+                var ponto = 0;
+                var suboperacao = 0;
+                var visor3;
+                var opcao = 0;
+                //11 +    12 -    13 div  14 .    15 =    16 x    17 C 
+                function funcao(elemento){
+                    if (elemento<10){
+                        if (ponto<10){
+                        visor = elemento + (visor*decimal);
+                        decimal = 10;
+                        }else if(ponto > 9){
+                            visor = visor + (elemento/ponto);
+                            ponto = ponto * 10;
+                        }
+                    }else if(elemento == 11){
+                        
+                        operacao(1);
+
+                        
+                        
+
+                    }else if(elemento == 12){
+                        operacao(2);
+                        
+                        
+
+                    }else if(elemento == 13){
+                        operacao(4);
+                        
+                        
+
+                    }else if(elemento==14){
+                        ponto = 10;
+                        
+
+                    }else if(elemento == 15){
+                        resolve(opcao);
+                        visor = visor3;
+                        decimal = 1;
+                        ponto = 0;
+                        suboperacao = 0;
+
+                    }else if(elemento == 16){
+                        operacao(3);
+                        
+                        
+
+                    }else if(elemento == 17){
+                        visor = 0;
+                        visor3 = "";
+                        suboperacao = 0;
+                        decimal = 1;
+                        ponto = 0;
+
+                    }
+
+
+                   
+                    
+                    console.log(visor);
+
+                    document.getElementById("tela").innerHTML = visor;
+                } //fim função
+                function operacao(opr){
+                    
+                    decimal = 1;
+                    ponto = 0;
+                    
+                    if(opr ==1 && suboperacao == 0){
+                        opcao = 1;
+                        visor3 = visor;                       
+                    }else if(opr ==2 && suboperacao == 0){
+                        opcao = 2;
+                        visor3 = visor;
+                    }else if(opr ==3 && suboperacao == 0){
+                        opcao = 3;
+                        visor3 = visor;
+                    }else if(opr ==4 && suboperacao == 0){
+                        opcao = 4;
+                        visor3 = visor;
+                    }else if(opr ==1 && suboperacao > 0){
+                        resolve(opcao);
+                        opcao = 1;
+                        
+                    }else if(opr ==2 && suboperacao > 0){
+                        resolve(opcao);
+                        opcao = 2;
+                        
+                    }else if(opr ==3 && suboperacao > 0){
+                        resolve(opcao);
+                        opcao = 3;
+                        
+                    }else if(opr ==4 && suboperacao > 0){
+                        resolve(opcao);
+                        opcao = 4;
+                        
+                    }
+                    suboperacao ++;
+                    visor = "";
+                }//fim operação
+                function resolve(op){
+                    if (op==1){
+                        visor3 = visor3 + visor;
+                    }else if(op==2){
+                        visor3 = visor3 - visor;
+                    }else if(op==3){
+                        visor3 = visor3 * visor;    
+                    }else if(op==4){
+                        visor3 = visor3 / visor;
+                    }
+
+                }//fim resolve
+                
+            </script>
+        </div>
+
+    </body>
+
+</html>
