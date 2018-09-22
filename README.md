@@ -1,6 +1,6 @@
 # Calculadora Java Script Pure
 
-My first onepage, made in react to improve the knowledge.
+Calculator made with pure java script, to improve and test the knowledge of it.
 
 ![alt text](https://i.imgur.com/mwp2x3P.png)
 
