@@ -7,7 +7,7 @@ Calculator made with pure java script, to improve and test the knowledge of it.
 ## Getting Started
 
 ```
--git clone https://github.com/armenio2/react-onepage-tennis.git
+-git clone https://github.com/armenio2/Calculadora-JS.git
 ```
 
 ## Built With
